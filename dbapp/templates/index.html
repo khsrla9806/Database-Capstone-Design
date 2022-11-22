@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main">
+	<div class="inner">
+		<header>
+			<h1>한서대학교 신입생 길라잡이에 오신걸 환영합니다.</h1>
+			<p>평소 궁금했던 점을 해결하고, 자신의 노하우를 공유하세요.</p>
+		</header>
+
+		<div>
+			<h2 style="margin-bottom:-70px;">자주 찾는 카테고리</h2>
+			<section class="tiles">
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'images/club_image.png' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>동아리</h2>
+						<div class="content">
+							<p>학교에 어떤 동아리가 있는지 궁금할 때 유용해요.</p>
+						</div>
+					</a>
+				</article>
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'images/scholarship.png' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>장학금</h2>
+						<div class="content">
+							<p>어떤 장학금을 받을 수 있는지 궁금할 때 유용해요.</p>
+						</div>
+					</a>
+				</article>
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'images/multimajor.png' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>다전공</h2>
+						<div class="content">
+							<p>복수전공/부전공에 대해서 궁금할 때 유용해요.</p>
+						</div>
+					</a>
+				</article>
+				<article class="style1">
+					<span class="image">
+						<img src="{% static 'images/hanseouniv.png' %}" alt="" />
+					</span>
+					<a href="generic.html">
+						<h2>대학기관</h2>
+						<div class="content">
+							<p>궁금증을 어느 부서에 문의할지 모를 때 유용해요.</p>
+						</div>
+					</a>
+				</article>
+			</section>
+		</div>
+	</div>
+</div>
+{% endblock %}
+				
