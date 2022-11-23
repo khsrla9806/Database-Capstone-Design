@@ -8,3 +8,6 @@ def login(request):
 
 def signin(request):
     return render(request, 'signin.html')
+
+def post(request):
+    return render(request, 'post.html')
