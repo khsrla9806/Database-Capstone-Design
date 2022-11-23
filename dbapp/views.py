@@ -5,3 +5,6 @@ def home(request):
 
 def post(request):
     return render(request, 'post.html')
+
+def institution(request):
+    return render(request, 'institution.html')
