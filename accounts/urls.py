@@ -6,3 +6,5 @@ urlpatterns = [
 path('login/', views.login, name = 'login'),
 path('signup/', views.signup, name = 'signup'),
 ]
+
+# url 작업 완료해주세요!
