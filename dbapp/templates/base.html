@@ -48,19 +48,19 @@
 
 				<!-- Menu -->
 					<nav id="menu">
-            {% if user.is_authenticated %}
+            			{% if user.is_authenticated %}
 						  <h2>안녕하세요. {{ user.username }}님</h2>
 						{% else %}
 						  <h2>환영합니다🙆🏻‍♂️</h2>
 						{% endif %}
 						<ul>
-              {% if user.is_authenticated %}
+             				{% if user.is_authenticated %}
 							<li><a href="">마이페이지</a></li>
 							<li><a href="accounts/logout">{{ user.username }} 로그아웃</a></li>
-              {% else %}
-              <li><a href="accounts/login">로그인</a></li>
+              				{% else %}
+              				<li><a href="accounts/login">로그인</a></li>
 							<li><a href="accounts/signup">회원가입</a></li>
-              {% endif %}
+              				{% endif %}
 						</ul>
 					</nav>
                 {% block content %}
