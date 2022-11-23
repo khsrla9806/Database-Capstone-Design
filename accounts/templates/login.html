@@ -22,34 +22,34 @@
                     {% csrf_token %}
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example1" class="form-control" />
+                      <input name="student_id" type="text" id="form2Example1" class="form-control" />
                       <label class="form-label" for="form2Example1">Student ID</label>
                     </div>
                   
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" />
+                      <input name="password" type="password" id="form2Example2" class="form-control" />
                       <label class="form-label" for="form2Example2">Password</label>
                     </div>
                   
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;" value="Login">로그인</button>
-                  
-                    <div style="padding-top:80px; padding-left:25%">
-                        <!-- Register buttons -->
-                        <div class="text-center">
-                            <p>아직 회원이 아니신가요? <a href="/signin">회원가입</a></p>
-                        </div>
-        
-                        <!-- 2 column grid layout for inline styling -->
-                        <div class="row mb-4">
-                            <div class="col">
-                                <!-- Simple link -->
-                                <a href="#!">비밀번호를 잊으셨나요?</a>
-                            </div>
+                    <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;" value="Login">로그인</button>
+                </form>
+
+                <div style="padding-top:80px; padding-left:25%">
+                    <!-- Register buttons -->
+                    <div class="text-center">
+                        <p>아직 회원이 아니신가요? <a href="/signin">회원가입</a></p>
+                    </div>
+    
+                    <!-- 2 column grid layout for inline styling -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <!-- Simple link -->
+                            <a href="#!">비밀번호를 잊으셨나요?</a>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </body>
