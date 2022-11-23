@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+    <head> 
+        <title>신입생 길라잡이 | 한서베이스</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+        <noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+    </head>
+    <body style="margin-left:20%; margin-right:20%; margin-top:10%; padding-bottom:40%;">
+        <div style="border: 1px solid gray; border-radius: 30px;">
+            <div style="padding-left:5%">
+                <div class="inner" id="header" style="padding-bottom:8%;">
+                    <div class="container">
+                        <a href="index.html" class="logo" style="margin-left:30%;">
+                            <span class="symbol"><img src="{% static 'images/hanseo_logo.png' %}" alt="" /></span><span class="title" style="font-size:20px">신입생 길라잡이</span>
+                        </a>
+                        <p style="margin-left:28%;">신입생 길라잡이에 오신걸 환영합니다.</p>
+                    </div>
+                </div>
+                <form style="width:500px; margin-left:15%; margin-right:15%; ">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                      <input type="email" id="form2Example1" class="form-control" />
+                      <label class="form-label" for="form2Example1">Student ID</label>
+                    </div>
+                  
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                      <input type="password" id="form2Example2" class="form-control" />
+                      <label class="form-label" for="form2Example2">Password</label>
+                    </div>
+                  
+                    <!-- Submit button -->
+                    <button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;">로그인</button>
+                  
+                    <div style="padding-top:80px; padding-left:25%">
+                        <!-- Register buttons -->
+                        <div class="text-center">
+                            <p>아직 회원이 아니신가요? <a href="#!">회원가입</a></p>
+                        </div>
+          
+                        <!-- 2 column grid layout for inline styling -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <!-- Simple link -->
+                                <a href="#!">비밀번호를 잊으셨나요?</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
