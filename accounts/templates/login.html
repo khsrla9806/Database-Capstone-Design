@@ -18,7 +18,8 @@
                         <p style="margin-left:28%;">신입생 길라잡이에 오신걸 환영합니다.</p>
                     </div>
                 </div>
-                <form style="width:500px; margin-left:15%; margin-right:15%; ">
+                <form method="POST" style="width:500px; margin-left:15%; margin-right:15%; ">
+                    {% csrf_token %}
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                       <input type="email" id="form2Example1" class="form-control" />
@@ -32,14 +33,14 @@
                     </div>
                   
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;">로그인</button>
+                    <button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;" value="Login">로그인</button>
                   
                     <div style="padding-top:80px; padding-left:25%">
                         <!-- Register buttons -->
                         <div class="text-center">
                             <p>아직 회원이 아니신가요? <a href="/signin">회원가입</a></p>
                         </div>
-          
+        
                         <!-- 2 column grid layout for inline styling -->
                         <div class="row mb-4">
                             <div class="col">

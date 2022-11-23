@@ -16,5 +16,18 @@ def signup(request):
     return render(request, 'signup.html')
 
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        student_id = request.POST['student_id']
+        password = request.POST['password']
+        user = authenticate(request, student_id=student_id, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            return render(request, 'login.html', {'error': 'student_id or password is incorrect.'})
+    else:
+        return render(request, 'login.html')
 
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
