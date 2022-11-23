@@ -4,11 +4,11 @@ from django.contrib.auth.models import AbstractUser
 # from mptt.models import MPTTModel
 
 class User(AbstractUser):
-    student_id = models.IntegerField(null=True)
-    username = models.CharField(max_length=10,unique =True)
+    student_id = models.CharField(max_length=9, null=True, unique =True)
+    username = models.CharField(max_length=10)
     # major = TreeForeignKey('Category',on_delete=models.CASCADE, null=True)
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'student_id'
 
 # class Major(MPTTModel):
 #     parent = TreeForeignKey(

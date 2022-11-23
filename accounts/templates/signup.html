@@ -18,36 +18,37 @@
                         <p style="margin-left:28%;">아래 양식을 확인해서 모두 입력해주세요!</p>
                     </div>
                 </div>
-                <form style="width:500px; margin-left:15%; margin-right:15%; ">
-                    <!-- Email input -->
+                <!-- 로그인 폼 부분 -->
+                <form method="POST" style="width:500px; margin-left:15%; margin-right:15%; ">
+                    {% csrf_token %}
                     <div class="form-outline mb-4">
-                      <input type="text" id="form2Example1" class="form-control" />
+                      <input name="student_id" type="text" id="form2Example1" class="form-control" />
                       <label class="form-label" for="form2Example1">Student ID</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="form2Example2" class="form-control" />
+                        <input name="username" type="text" id="form2Example2" class="form-control" />
                         <label class="form-label" for="form2Example2">Name</label>
                     </div>
 
-                    <div class="form-outline mb-4">
-                        <input type="text" id="form2Example2" class="form-control" />
+                    <!-- <div class="form-outline mb-4">
+                        <input name="password1" type="text" id="form2Example2" class="form-control" />
                         <label class="form-label" for="form2Example2">Major</label>
-                    </div>
+                    </div> -->
                   
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" />
+                      <input name="password1" type="password" id="form2Example2" class="form-control" />
                       <label class="form-label" for="form2Example2">Password</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="form2Example2" class="form-control" />
+                        <input name="password2" type="password" id="form2Example2" class="form-control" />
                         <label class="form-label" for="form2Example2">Password Check</label>
                     </div>
                   
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;">회원가입</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;">회원가입</button>
                 </form>
             </div>
         </div>
