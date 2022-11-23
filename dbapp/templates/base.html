@@ -16,24 +16,24 @@
 						<div class="inner">
                             <div class="container">
                                 <div class="row">
-                                  <div class="col-3">
-                                    <!-- Logo -->
-                                    <a href="/" class="logo">
-                                        <span class="symbol"><img src="{% static 'images/hanseo_logo.png' %}" alt="" /></span><span class="title" style="font-size:20px">신입생 길라잡이</span>
-                                    </a>
-                                  </div>
-                                  <div class="col-7">
-                                    <div class="container">
-                                        <div class="row height d-flex justify-content-center align-items-center">
-                                          <div class="col-md-8">
-                                            <div class="search">
-                                              <input type="text" class="form-control" placeholder="검색" style="height:40px">
-                                              <button class="btn btn-primary" style="height:30px">Search</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  	<div class="col-3">
+										<!-- Logo -->
+										<a href="/" class="logo">
+											<span class="symbol"><img src="{% static 'images/hanseo_logo.png' %}" alt="" /></span><span class="title" style="font-size:20px">신입생 길라잡이</span>
+										</a>
+                                  	</div>
+                                  	<div class="col-7">
+                                    	<div class="container">
+                                        	<div class="row height d-flex justify-content-center align-items-center">
+                                          	<div class="col-md-8">
+                                            	<div class="search">
+                                              		<input type="text" class="form-control" placeholder="검색" style="height:40px">
+                                              		<button class="btn btn-primary" style="height:30px">Search</button>
+                                            	</div>
+                                          	</div>
+                                        	</div>
+                                    	</div>
+                                   </div>
                                 </div>
                             </div>
 							<!-- Nav -->
@@ -48,21 +48,20 @@
 
 				<!-- Menu -->
 					<nav id="menu">
-						{% if user.is_authenticated %}
-						<h2>안녕하세요. {{ user.username }}님</h2>
+            {% if user.is_authenticated %}
+						  <h2>안녕하세요. {{ user.username }}님</h2>
 						{% else %}
-						<h2>환영합니다🙆🏻‍♂️</h2>
+						  <h2>환영합니다🙆🏻‍♂️</h2>
 						{% endif %}
 						<ul>
-							{% if user.is_authenticated %}
-							<li><a href="generic.html">마이페이지</a></li>
-							<li><a href="/accounts/logout/">{{ user.username }} 로그아웃</a></li>
-							{% else %}
-							<li><a href="accounts/login">로그인</a></li>
+              {% if user.is_authenticated %}
+							<li><a href="">마이페이지</a></li>
+							<li><a href="accounts/logout">{{ user.username }} 로그아웃</a></li>
+              {% else %}
+              <li><a href="accounts/login">로그인</a></li>
 							<li><a href="accounts/signup">회원가입</a></li>
-							{% endif %}
+              {% endif %}
 						</ul>
-					</div>
 					</nav>
                 {% block content %}
 				
