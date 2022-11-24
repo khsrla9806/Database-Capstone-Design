@@ -39,12 +39,19 @@
 
 				<!-- Menu -->
 					<nav id="menu">
-						<h2>신입생 길라잡이</h2>
+						{% if user.is_authenticated %}
+						<h2>안녕하세요. {{ user.username }}님</h2>
+						{% else %}
+						<h2>환영합니다🙆🏻‍♂️</h2>
+						{% endif %}
 						<ul>
-							<li><a href="/login">로그인</a></li>
-							<li><a href="/signin">회원가입</a></li>
-                            <li><a href="generic.html">마이페이지</a></li>
-							<li><a href="generic.html">로그아웃</a></li>
+							{% if user.is_authenticated %}
+							<li><a href="">마이페이지</a></li>
+							<li><a href="/accounts/logout">{{ user.username }} 로그아웃</a></li>
+							{% else %}
+							<li><a href="/accounts/login">로그인</a></li>
+							<li><a href="/accounts/signup">회원가입</a></li>
+							{% endif %}
 						</ul>
 					</nav>
                 {% block content %}

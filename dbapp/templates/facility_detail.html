@@ -1,0 +1,24 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main" style="margin-top:-70px;">
+	<div class="inner">
+		<h1>{{ facility.name }}</h1>
+        <p>카테고리 : {{ facility.category }}</p>
+        <p>전화번호 : {{ facility.tel_number }}</p>
+        <p>지도 URL : <a href="{{ facility.url }}">지도 보러가기 🔎</a></p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <img class="image" src="/media/{{ facility.image }}" alt="" style="width:500px; heigth:500px;" />
+              </div>
+              <div class="col">
+                <h3>내용</h3>
+                <p style="width:500px">{{ facility.content }}</p>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

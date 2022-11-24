@@ -1,0 +1,41 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main">
+	<div class="inner">
+        <div class="row" style="margin-top:-70px">
+			<div class="col-10">
+				<h1>대학 주변 시설</h1>
+			</div>
+			<div class="col-1">
+                {% if user.is_authenticated %}
+				<button class="btn btn-primary" style="height:40px; margin-left:-15px;">시설 등록하기</button>
+                {% endif %}
+			</div>
+		</div>
+        <div>
+            <p>한서대학교 주변에 있는 시설들에 대한 정보입니다. 추가하고 싶은 내용이 있다면 추가해서 모두에게 공유하세요!</p>
+        </div>
+		<span class="image main"><img src="{% static 'images/hanseo-facility-main.png' %}" alt="" /></span>
+		<div>
+			<h2 style="margin-bottom:-70px;">학교 시설 주변 정보</h2>
+			<section class="tiles">
+                {% for facility in facilities %}
+                    <article class="style1">
+                        <span class="image">
+                            <img src="/media/{{ facility.image }}" alt="" />
+                        </span>
+                        <a href="facility/{{ facility.id }}">
+                            <h2>{{ facility.name }}</h2>
+                            <div class="content">
+                                <p>{{ facility.category }}</p>
+                            </div>
+                        </a>
+                    </article>
+                {% endfor %}
+			</section>
+		</div>
+	</div>
+</div>
+{% endblock %}
