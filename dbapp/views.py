@@ -5,8 +5,8 @@ from .models import Facility
 def home(request):
     return render(request, 'index.html')
 
-def post(request):
-    return render(request, 'post.html')
+def club(request):
+    return render(request, 'club.html')
 
 def facilityView(request):
     try:
