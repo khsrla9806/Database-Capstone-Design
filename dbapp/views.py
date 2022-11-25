@@ -39,6 +39,25 @@ def facilityView(request):
     return render(request, 'facility.html', { 'facilities' : facilities })
 
 def facilityDetailView(request, id):
-    facility = Facility.objects.get(pk=id)
+    try:
+        cursor = connection.cursor()
+        sql = "SELECT name, category, content, tel_number, image, url FROM hanseobase.dbapp_facility WHERE id=(%s)"
+        cursor.execute(sql, (id,))
+        data = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        facility = {
+            'name' : data[0][0],
+            'category' : data[0][1],
+            'content' : data[0][2],
+            'tel_number' : data[0][3],
+            'image' : data[0][4],
+            'url' : data[0][5]
+        }
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
         
     return render(request, 'facility_detail.html', { 'facility' : facility })
