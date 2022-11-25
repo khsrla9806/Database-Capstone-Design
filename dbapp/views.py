@@ -5,9 +5,6 @@ from .models import Facility
 def home(request):
     return render(request, 'index.html')
 
-def club(request):
-    return render(request, 'club.html')
-
 def facilityView(request):
     try:
         cursor = connection.cursor()
@@ -61,3 +58,60 @@ def facilityDetailView(request, id):
         print("찾고자 하는 정보가 없습니다.")
         
     return render(request, 'facility_detail.html', { 'facility' : facility })
+
+def clubView(request):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, name, category, content, phone_number, image, url FROM hanseobase.dbapp_club;"
+        result = cursor.execute(sql)
+        datas = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        clubs = []
+        for data in datas:
+            row = {
+                'id' : data[0],
+                'name' : data[1],
+                'category' : data[2],
+                'content' : data[3],
+                'phone_number' : data[4],
+                'image' : data[5],
+                'url' : data[6]
+            }
+            clubs.append(row)
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'club.html', { 'clubs' : clubs })
+
+def clubDetailView(request, id):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, name, category, content, phone_number, image, url FROM hanseobase.dbapp_club WHERE id=(%s);"
+        result = cursor.execute(sql, (id,))
+        data = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        club = {
+            'id' : data[0][0],
+            'name' : data[0][1],
+            'category' : data[0][2],
+            'content' : data[0][3],
+            'phone_number' : data[0][4],
+            'image' : data[0][5],
+            'url' : data[0][6]
+            }
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'club_detail.html', { 'club' : club })

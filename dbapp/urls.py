@@ -8,7 +8,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name = 'home'),
-    path('club', views.club, name = 'club'),
+    path('club', views.clubView, name = 'club'),
+    path('club/<int:id>', views.clubDetailView, name = 'club_detail'),
     path('facility', views.facilityView, name = 'facility'),
     path('facility/<int:id>', views.facilityDetailView, name = 'facility_detail'),
 ]

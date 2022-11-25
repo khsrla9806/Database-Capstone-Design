@@ -1,0 +1,24 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main" style="margin-top:-70px;">
+	<div class="inner">
+		<h1>{{ club.name }}</h1>
+        <p>카테고리 : {{ club.category }}</p>
+        <p>연락처 : {{ club.phone_number }}</p>
+        <p>동아리 URL : <a href="{{ club.url }}">동아리 보러가기 🔎</a></p>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <img class="image" src="/media/{{ club.image }}" alt="" style="width:500px; heigth:500px;" />
+              </div>
+              <div class="col">
+                <h3>내용</h3>
+                <p style="width:500px">{{ club.content }}</p>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}
