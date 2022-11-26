@@ -3,13 +3,12 @@
 
 {% block content %}
 
-{% for club in clubs %}
+{% for r in reseult %}
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-        <h5 class="card-text">{{club.name}}</h5>
-        <p class="card-text">{{club.content}}</p>
-        <img class="image" src="/media/{{ club.image }}" alt="" style="width:100px; heigth:100px;" />
+        <h5 class="card-text">{{r.name}}</h5>
+        <img class="image" src="/media/{{ r.image }}" alt="" style="width:100px; heigth:100px;" />
         </div>
     </div>
-{% endfor %}
+{% endfor %} 
 {% endblock %}
