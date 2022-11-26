@@ -1,0 +1,14 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for r in reseult %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-text">{{r.name}}</h5>
+        <img class="image" src="/media/{{ r.image }}" alt="" style="width:100px; heigth:100px;" />
+        </div>
+    </div>
+{% endfor %} 
+{% endblock %}
