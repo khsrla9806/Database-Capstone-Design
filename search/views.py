@@ -15,35 +15,21 @@ def searchResult(request):
         facility = Facility.objects.all().filter(
             Q(name__icontains=query) 
         )
-        reseult = club.union(facility)
-    return render(request, 'search.html', {'query':query, 'reseult':reseult})
+        result = club.union(facility)
+        print(result)
+    return render(request, 'search.html', {'query':query, 'result':result})
 
-# def searchResult(request):
-#     if request.method=='GET':
-#         searchs =[]
-#         try:
-#             target = request.GET['kw']
-#             print("1")
-#             cursor = connection.cursor()
-#             sql = "SELECT name, content, image FROM hanseobase.dbapp_club WHERE name=(%s);"
-#             # sql = "SELECT name, content FROM hanseobase.dbapp_facility WHERE name LIKE '(%s)' UNION SELECT name, content FROM hanseobase.dbapp_club WHERE name LIKE '(%s)';"
-#             print("")
-#             result = cursor.execute(sql,[target,])
-#             print("3")
-#             datas = cursor.fetchall()
-#             print("4")
-#             connection.commit()
-#             connection.close()
-
-#             # searchs =[]
-#             for data in datas:
-#                 row = {
-#                     'name' : data[0],
-#                     'content': data[1],
-#                 }
-#                 searchs.append(row)
-#         except:
-#             connection.rollback()
-#             print("찾고자 하는 정보가 없습니다.")
-
-#         return render(request,'search.html',{'searchs':searchs})
+def searchDetail(request, name):
+    try:
+        if Club.objects.get(name=name) is not None:
+            result = Club.objects.get(name=name)
+    except:
+        pass
+    
+    try:
+        if Facility.objects.get(name=name) is not None:
+            result = Facility.objects.get(name=name)
+    except:
+        pass
+    
+    return render(request, 'search_detail.html', {'result' : result})

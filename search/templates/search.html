@@ -1,14 +1,23 @@
-{% extends 'subbase.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
-{% for r in reseult %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-        <h5 class="card-text">{{r.name}}</h5>
-        <img class="image" src="/media/{{ r.image }}" alt="" style="width:100px; heigth:100px;" />
-        </div>
-    </div>
-{% endfor %} 
+<div style="padding-left:50px;">
+    <section class="tiles">
+        {% for r in result %}
+            <article class="style1">
+                <span class="image">
+                    <img src="/media/{{ r.image }}" alt="" />
+                </span>
+                <a href="/search/{{ r.name }}">
+                    <h2>{{ r.name }}</h2>
+                    <div class="content">
+                        <p>{{ r.category }}</p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %} 
+    </section>
+</div>
 {% endblock %}

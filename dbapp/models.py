@@ -30,7 +30,7 @@ class Club(models.Model):
     name = models.CharField(max_length=30, null=False)
     category = models.CharField(choices=CHOICES, max_length=50, null=True, blank=True)
     content = models.TextField(null=True)
-    phone_number = models.CharField(max_length=20, null=True)
+    tel_number = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to='club/', default='/static/images/hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
     

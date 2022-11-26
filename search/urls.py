@@ -4,4 +4,5 @@ app_name = 'search'
 
 urlpatterns =[
     path('',views.searchResult, name='searchResult'),
+    path('<str:name>', views.searchDetail, name='searchDetail'),
 ]
