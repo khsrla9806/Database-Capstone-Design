@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dbapp',
     'accounts',
-    'mptt'
+    'mptt',
+    'search'
 ]
 AUTH_USER_MODEL = 'accounts.User'
 

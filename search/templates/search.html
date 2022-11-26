@@ -1,0 +1,15 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for club in clubs %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+        <h5 class="card-text">{{club.name}}</h5>
+        <p class="card-text">{{club.content}}</p>
+        <img class="image" src="/media/{{ club.image }}" alt="" style="width:100px; heigth:100px;" />
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
