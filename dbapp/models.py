@@ -36,3 +36,31 @@ class Club(models.Model):
     
     def __str__(self):
         return self.name
+
+class Multimajor(models.Model):
+    opt1 = "부전공"
+    opt2 = "복수전공"
+    CHOICES = ((opt1,"부전공"),(opt2,"복수전공"))
+    #신청시기
+    time = models.CharField(max_length=20, null=True)
+    #구비서류
+    document = models.TextField(null=True)
+    #관련조항
+    article = models.CharField(max_length=50,null=True)
+    #참고사항
+    notes = models.TextField(null=True)
+    #부전공/복수전공
+    category = models.CharField(choices=CHOICES, max_length=10,null=True,blank=True)
+
+    def __str__(self):
+        return self.category
+
+class Scholarship(models.Model):
+    name = models.CharField(max_length=30, null=False)
+    content = models.TextField(null=True)
+    money = models.CharField(max_length=20,null=True)
+
+    def __str__(self):
+        return self.name
+
+    
