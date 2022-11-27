@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
-from .models import Facility
+from .models import Club, Facility
 from .forms import ClubForm, FacilityForm
 
 def home(request):
@@ -39,7 +39,7 @@ def facilityView(request):
 def facilityDetailView(request, id):
     try:
         cursor = connection.cursor()
-        sql = "SELECT name, category, content, tel_number, image, url FROM hanseobase.dbapp_facility WHERE id=(%s)"
+        sql = "SELECT id, name, category, content, tel_number, image, url FROM hanseobase.dbapp_facility WHERE id=(%s)"
         cursor.execute(sql, (id,))
         data = cursor.fetchall()
         
@@ -47,12 +47,13 @@ def facilityDetailView(request, id):
         connection.close()
         
         facility = {
-            'name' : data[0][0],
-            'category' : data[0][1],
-            'content' : data[0][2],
-            'tel_number' : data[0][3],
-            'image' : data[0][4],
-            'url' : data[0][5]
+            'id' : data[0][0],
+            'name' : data[0][1],
+            'category' : data[0][2],
+            'content' : data[0][3],
+            'tel_number' : data[0][4],
+            'image' : data[0][5],
+            'url' : data[0][6]
         }
     except:
         connection.rollback()
@@ -73,6 +74,24 @@ def facilityCreate(request):
         facility_form = FacilityForm(request.POST, request.FILES)
         context = {"facility_form" : facility_form}
         return render(request, 'facility_create.html', context)
+    
+def facilityUpdate(request, id):
+    facility = Facility.objects.get(pk=id)
+    if request.method == "POST":
+        facility_form = FacilityForm(request.POST, instance=facility)
+        context = {"facility_form" : facility_form}
+        if facility_form.is_valid():
+            facility = facility_form.save()
+            return redirect('facility_detail', facility.id)
+    else:
+        facility_form = FacilityForm(instance=facility)
+        context = {"facility_form" : facility_form}
+        return render(request, 'facility_update.html', context)
+    
+def facilityDelete(request, id):
+    facility = get_object_or_404(Facility, pk=id)
+    facility.delete()
+    return redirect('facility')
 
 def clubView(request):
     try:
@@ -144,6 +163,24 @@ def clubCreate(request):
         club_form = ClubForm(request.POST, request.FILES)
         context = {"club_form" : club_form}
         return render(request, 'club_create.html', context)
+
+def clubUpdate(request, id):
+    club = Club.objects.get(pk=id)
+    if request.method == "POST":
+        club_form = ClubForm(request.POST, instance=club)
+        context = {"club_form" : club_form}
+        if club_form.is_valid():
+            club = club_form.save()
+            return redirect('club_detail', club.id)
+    else:
+        club_form = ClubForm(instance=club)
+        context = {"club_form" : club_form}
+        return render(request, 'club_update.html', context)
+
+def clubDelete(request, id):
+    club = get_object_or_404(Club, pk=id)
+    club.delete()
+    return redirect('club')
 
 def postCreate(request):
     return render(request, 'post_create.html')

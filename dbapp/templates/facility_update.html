@@ -1,0 +1,40 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="comment-form-wrap pt-5" style="margin-left:20%; margin-right:20%;">
+    <h2 class="mb-5" style="color:black; font-weight:bold; font-size: 35px;">시설 등록하기</h2>
+    <div style="padding: 20px; border: 1px solid gray; border-radius: 30px; margin-bottom: 200px;">
+        <form method="post" enctype = "multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>시설 이름</label>
+                {{ facility_form.name }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label>카테고리</label>
+                {{ facility_form.category }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label>전화번호</label>
+                {{ facility_form.tel_number }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label>내용</label>
+                {{ facility_form.content }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label>지도 URL</label>
+                {{ facility_form.url }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label>이미지</label>
+                {{ facility_form.image }}
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <button type="submit" class="btn btn-primary">작성하기</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
