@@ -1,0 +1,25 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div class="comment-form-wrap pt-5" style="margin-left:20%; margin-right:20%;">
+    <h2 class="mb-5" style="color:black; font-weight:bold; font-size: 35px;">내가 전하는 이야기</h2>
+    <div style="padding: 20px; border: 1px solid gray; border-radius: 30px; margin-bottom: 200px;">
+        <form>
+            <div class="form-group">
+            <label for="exampleInputEmail1">제목</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="제목을 입력하세요.">
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label for="exampleInputPassword1">짧은 설명</label>
+                <input type="text" class="form-control" placeholder="짧은 설명을 입력하세요.">
+            </div>
+            <div class="form-group" style="padding-top:50px;">
+                <label for="exampleInputPassword1">내용</label>
+                <textarea class="form-control" placeholder="본문을 입력하세요." style="height: 300px;"></textarea>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary">작성하기</button>
+    </div>
+</div>
+{% endblock %}

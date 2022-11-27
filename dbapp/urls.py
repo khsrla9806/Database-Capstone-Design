@@ -12,6 +12,7 @@ urlpatterns = [
     path('club/<int:id>', views.clubDetailView, name = 'club_detail'),
     path('facility', views.facilityView, name = 'facility'),
     path('facility/<int:id>', views.facilityDetailView, name = 'facility_detail'),
+    path('postcreate/', views.postCreate, name = "post_create"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

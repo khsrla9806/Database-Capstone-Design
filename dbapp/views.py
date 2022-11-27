@@ -115,3 +115,6 @@ def clubDetailView(request, id):
         print("찾고자 하는 정보가 없습니다.")
     
     return render(request, 'club_detail.html', { 'club' : club })
+
+def postCreate(request):
+    return render(request, 'post_create.html')
