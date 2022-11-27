@@ -12,6 +12,7 @@ class Facility(models.Model):
     tel_number = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to='facility/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
+    table = models.CharField(max_length=50, null=True, default="facility")
     
     def __str__(self):
         return self.name
@@ -33,6 +34,7 @@ class Club(models.Model):
     tel_number = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to='club/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
+    table = models.CharField(max_length=50, null=True, default="club")
     
     def __str__(self):
         return self.name
