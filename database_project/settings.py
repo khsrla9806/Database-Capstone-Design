@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'dbapp',
     'accounts',
     'mptt',
-    'search'
+    'search',
 ]
 AUTH_USER_MODEL = 'accounts.User'
 
