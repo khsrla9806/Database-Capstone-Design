@@ -63,7 +63,7 @@ def clubView(request):
     try:
         cursor = connection.cursor()
         
-        sql = "SELECT id, name, category, content, phone_number, image, url FROM hanseobase.dbapp_club;"
+        sql = "SELECT id, name, category, content, tel_number, image, url FROM hanseobase.dbapp_club;"
         result = cursor.execute(sql)
         datas = cursor.fetchall()
         
@@ -77,7 +77,7 @@ def clubView(request):
                 'name' : data[1],
                 'category' : data[2],
                 'content' : data[3],
-                'phone_number' : data[4],
+                'tel_number' : data[4],
                 'image' : data[5],
                 'url' : data[6]
             }
@@ -93,7 +93,7 @@ def clubDetailView(request, id):
     try:
         cursor = connection.cursor()
         
-        sql = "SELECT id, name, category, content, phone_number, image, url FROM hanseobase.dbapp_club WHERE id=(%s);"
+        sql = "SELECT id, name, category, content, tel_number, image, url FROM hanseobase.dbapp_club WHERE id=(%s);"
         result = cursor.execute(sql, (id,))
         data = cursor.fetchall()
         
@@ -105,7 +105,7 @@ def clubDetailView(request, id):
             'name' : data[0][1],
             'category' : data[0][2],
             'content' : data[0][3],
-            'phone_number' : data[0][4],
+            'tel_number' : data[0][4],
             'image' : data[0][5],
             'url' : data[0][6]
             }
