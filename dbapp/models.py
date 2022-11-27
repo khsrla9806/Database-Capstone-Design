@@ -10,7 +10,7 @@ class Facility(models.Model):
     category = models.CharField(choices=CHOICES, max_length=50, null=True, blank=True)
     content = models.TextField(null=True)
     tel_number = models.CharField(max_length=20, null=True)
-    image = models.ImageField(upload_to='facility/', default='/static/images/hanseo_logo.png', null=True, blank=True)
+    image = models.ImageField(upload_to='facility/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
     
     def __str__(self):
@@ -31,7 +31,7 @@ class Club(models.Model):
     category = models.CharField(choices=CHOICES, max_length=50, null=True, blank=True)
     content = models.TextField(null=True)
     tel_number = models.CharField(max_length=20, null=True)
-    image = models.ImageField(upload_to='club/', default='/static/images/hanseo_logo.png', null=True, blank=True)
+    image = models.ImageField(upload_to='club/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
     
     def __str__(self):

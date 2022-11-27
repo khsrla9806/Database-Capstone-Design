@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db import connection
 from .models import Facility
+from .forms import ClubForm, FacilityForm
 
 def home(request):
     return render(request, 'index.html')
@@ -59,6 +60,20 @@ def facilityDetailView(request, id):
         
     return render(request, 'facility_detail.html', { 'facility' : facility })
 
+def facilityCreate(request):
+    if request.method == "POST":
+        facility_form = FacilityForm(request.POST, request.FILES)
+        context = {"facility_form" : facility_form}
+        if facility_form.is_valid():
+            facility = facility_form.save()
+            return redirect('facility')
+        else:
+            return render(request, 'facility_create.html', context)
+    else:
+        facility_form = FacilityForm(request.POST, request.FILES)
+        context = {"facility_form" : facility_form}
+        return render(request, 'facility_create.html', context)
+
 def clubView(request):
     try:
         cursor = connection.cursor()
@@ -115,6 +130,20 @@ def clubDetailView(request, id):
         print("찾고자 하는 정보가 없습니다.")
     
     return render(request, 'club_detail.html', { 'club' : club })
+
+def clubCreate(request):
+    if request.method == "POST":
+        club_form = ClubForm(request.POST, request.FILES)
+        context = {"club_form" : club_form}
+        if club_form.is_valid():
+            club = club_form.save()
+            return redirect('club')
+        else:
+            return render(request, 'club_create.html', context)
+    else:
+        club_form = ClubForm(request.POST, request.FILES)
+        context = {"club_form" : club_form}
+        return render(request, 'club_create.html', context)
 
 def postCreate(request):
     return render(request, 'post_create.html')
