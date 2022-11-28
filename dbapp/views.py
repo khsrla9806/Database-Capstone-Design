@@ -39,7 +39,7 @@ def facilityView(request):
 def facilityDetailView(request, id):
     try:
         cursor = connection.cursor()
-        sql = "SELECT id, name, category, content, tel_number, image, url FROM hanseobase.dbapp_facility WHERE id=(%s)"
+        sql = "SELECT id, name, category, content, tel_number, image, url, user_id FROM hanseobase.dbapp_facility WHERE id=(%s)"
         cursor.execute(sql, (id,))
         data = cursor.fetchall()
         
@@ -53,7 +53,8 @@ def facilityDetailView(request, id):
             'content' : data[0][3],
             'tel_number' : data[0][4],
             'image' : data[0][5],
-            'url' : data[0][6]
+            'url' : data[0][6],
+            'user_id' : data[0][7],
         }
     except:
         connection.rollback()
@@ -66,7 +67,9 @@ def facilityCreate(request):
         facility_form = FacilityForm(request.POST, request.FILES)
         context = {"facility_form" : facility_form}
         if facility_form.is_valid():
-            facility = facility_form.save()
+            facility = facility_form.save(commit=False)
+            facility.user_id = request.user.id
+            facility.save()
             return redirect('facility')
         else:
             return render(request, 'facility_create.html', context)
@@ -78,11 +81,12 @@ def facilityCreate(request):
 def facilityUpdate(request, id):
     facility = Facility.objects.get(pk=id)
     if request.method == "POST":
-        facility_form = FacilityForm(request.POST, instance=facility)
-        context = {"facility_form" : facility_form}
-        if facility_form.is_valid():
-            facility = facility_form.save()
-            return redirect('facility_detail', facility.id)
+        if(facility.user == request.user):
+            facility_form = FacilityForm(request.POST, instance=facility)
+            context = {"facility_form" : facility_form}
+            if facility_form.is_valid():
+                facility = facility_form.save()
+                return redirect('facility_detail', facility.id)
     else:
         facility_form = FacilityForm(instance=facility)
         context = {"facility_form" : facility_form}
@@ -127,7 +131,7 @@ def clubDetailView(request, id):
     try:
         cursor = connection.cursor()
         
-        sql = "SELECT id, name, category, content, tel_number, image, url FROM hanseobase.dbapp_club WHERE id=(%s);"
+        sql = "SELECT id, name, category, content, tel_number, image, url, user_id FROM hanseobase.dbapp_club WHERE id=(%s);"
         result = cursor.execute(sql, (id,))
         data = cursor.fetchall()
         
@@ -141,7 +145,8 @@ def clubDetailView(request, id):
             'content' : data[0][3],
             'tel_number' : data[0][4],
             'image' : data[0][5],
-            'url' : data[0][6]
+            'url' : data[0][6],
+            'user_id': data[0][7]
             }
         
     except:
@@ -155,6 +160,7 @@ def clubCreate(request):
         club_form = ClubForm(request.POST, request.FILES)
         context = {"club_form" : club_form}
         if club_form.is_valid():
+            # club.user = request.user
             club = club_form.save()
             return redirect('club')
         else:
