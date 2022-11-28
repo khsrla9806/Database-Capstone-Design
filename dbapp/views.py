@@ -160,8 +160,9 @@ def clubCreate(request):
         club_form = ClubForm(request.POST, request.FILES)
         context = {"club_form" : club_form}
         if club_form.is_valid():
-            # club.user = request.user
-            club = club_form.save()
+            club = club_form.save(commit=False)
+            club.user_id = request.user.id
+            club.save()
             return redirect('club')
         else:
             return render(request, 'club_create.html', context)

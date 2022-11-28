@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import User
 from django.conf import settings
+
 class Facility(models.Model):
     opt1= "카페"
     opt2= "음식점"
@@ -56,6 +57,7 @@ class Multimajor(models.Model):
     notes = models.TextField(null=True)
     #부전공/복수전공
     category = models.CharField(choices=CHOICES, max_length=10,null=True,blank=True)
+    table = models.CharField(max_length=50, null=True, default="multimajor")
 
     def __str__(self):
         return self.category
@@ -64,6 +66,7 @@ class Scholarship(models.Model):
     name = models.CharField(max_length=30, null=False)
     content = models.TextField(null=True)
     money = models.CharField(max_length=20,null=True)
+    table = models.CharField(max_length=50, null=True, default="scholarship")
 
     def __str__(self):
         return self.name
