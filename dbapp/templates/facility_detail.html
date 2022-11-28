@@ -19,10 +19,12 @@
               </div>
             </div>
         </div>
-        <div style="padding-top: 20px;">
-          <a href="/facility/{{ facility.id }}/update" style="border-bottom:none;"><button type="submit" class="btn btn-primary">수정하기</button></a>
-          <a href="/facility/{{ facility.id }}/delete" style="border-bottom:none;"><button type="submit" style="margin-left:20px;" class="btn btn-primary">삭제하기</button></a>
-        </div>
+        {% if facility.user_id == request.user.id %}
+          <div style="padding-top: 20px;">
+            <a href="/facility/{{ facility.id }}/update" style="border-bottom:none;"><button type="submit" class="btn btn-primary">수정하기</button></a>
+            <a href="/facility/{{ facility.id }}/delete" style="border-bottom:none;"><button type="submit" style="margin-left:20px;" class="btn btn-primary">삭제하기</button></a>
+          </div>
+        {% endif %}
 	</div>
 </div>
 {% endblock %}

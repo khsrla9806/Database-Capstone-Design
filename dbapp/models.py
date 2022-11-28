@@ -1,5 +1,6 @@
 from django.db import models
-
+from accounts.models import User
+from django.conf import settings
 class Facility(models.Model):
     opt1= "카페"
     opt2= "음식점"
@@ -13,6 +14,7 @@ class Facility(models.Model):
     image = models.ImageField(upload_to='facility/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
     table = models.CharField(max_length=50, null=True, default="facility")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.name
@@ -35,6 +37,7 @@ class Club(models.Model):
     image = models.ImageField(upload_to='club/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
     table = models.CharField(max_length=50, null=True, default="club")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null =True)
     
     def __str__(self):
         return self.name
