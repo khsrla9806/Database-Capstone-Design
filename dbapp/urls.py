@@ -18,6 +18,10 @@ urlpatterns = [
     path('facility/<int:id>', views.facilityDetailView, name = 'facility_detail'),
     path('facility/<int:id>/delete', views.facilityDelete, name = 'facility_delete'),
     path('facility/<int:id>/update', views.facilityUpdate, name = 'facility_update'),
+    path('scholarship', views.scholarshipView, name = 'scholarship'),
+    path('scholarship/<int:id>', views.scholarshipDetailView, name = 'scholarship_detail'),
+    path('multimajor', views.multimajorView, name = 'multimajor'),
+    path('multimajor/<int:id>', views.multimajorDetailView, name = 'multimajor_detail'),
     path('postcreate/', views.postCreate, name = "post_create"),
 ]
 

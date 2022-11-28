@@ -1,0 +1,42 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main" style="margin-top:-70px;">
+	<div class="inner">
+		<h1>{{ multimajor.category }}</h1>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h3>신청시기</h3>
+                <p style="width:500px">{{ multimajor.time }}</p>
+              </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h3>구비서류</h3>
+                <p style="width:500px">{{ multimajor.document }}</p>
+              </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h3>관련조항</h3>
+                <p style="width:500px">{{ multimajor.article }}</p>
+              </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                <h3>참고사항</h3>
+                <p style="width:500px">{{ multimajor.notes }}</p>
+              </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock %}

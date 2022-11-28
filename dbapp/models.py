@@ -14,7 +14,7 @@ class Facility(models.Model):
     tel_number = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to='facility/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
-    table = models.CharField(max_length=50, null=True, default="facility")
+    reference = models.CharField(max_length=50, null=True, default="facility")
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
@@ -37,7 +37,7 @@ class Club(models.Model):
     tel_number = models.CharField(max_length=20, null=True)
     image = models.ImageField(upload_to='club/', default='hanseo_logo.png', null=True, blank=True)
     url = models.URLField(null=True)
-    table = models.CharField(max_length=50, null=True, default="club")
+    reference = models.CharField(max_length=40, null=True, default="club")
     user = models.ForeignKey(User, on_delete=models.CASCADE,null =True)
     
     def __str__(self):
@@ -57,7 +57,7 @@ class Multimajor(models.Model):
     notes = models.TextField(null=True)
     #부전공/복수전공
     category = models.CharField(choices=CHOICES, max_length=10,null=True,blank=True)
-    table = models.CharField(max_length=50, null=True, default="multimajor")
+    reference = models.CharField(max_length=40, null=True, default="multimajor")
 
     def __str__(self):
         return self.category
@@ -66,7 +66,7 @@ class Scholarship(models.Model):
     name = models.CharField(max_length=30, null=False)
     content = models.TextField(null=True)
     money = models.CharField(max_length=20,null=True)
-    table = models.CharField(max_length=50, null=True, default="scholarship")
+    reference = models.CharField(max_length=50, null=True, default="scholarship")
 
     def __str__(self):
         return self.name
