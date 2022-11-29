@@ -213,6 +213,112 @@ def clubDelete(request, id):
     club.delete()
     return redirect('club')
 
+def scholarshipView(request):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, name, content, money FROM hanseobase.dbapp_scholarship;"
+        result = cursor.execute(sql)
+        datas = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        scholarship = []
+        for data in datas:
+            row = {
+                'id' : data[0],
+                'name' : data[1],
+                'content' : data[2],
+                'money' : data[3]
+            }
+            scholarship.append(row)
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'scholarship.html', { 'scholarship' : scholarship })
+
+def scholarshipDetailView(request, id):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, name, content, money FROM hanseobase.dbapp_scholarship WHERE id=(%s);"
+        result = cursor.execute(sql, (id,))
+        data = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        scholarship = {
+            'id' : data[0][0],
+            'name' : data[0][1],
+            'content' : data[0][2],
+            'money' : data[0][3]
+            }
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'scholarship_detail.html', { 'scholarship' : scholarship })
+
+def multimajorView(request):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, time, document, article, notes, category FROM hanseobase.dbapp_multimajor;"
+        result = cursor.execute(sql)
+        datas = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        multimajor = []
+        for data in datas:
+            row = {
+                'id' : data[0],
+                'time' : data[1],
+                'document' : data[2],
+                'article' : data[3],
+                'notes' : data[4],
+                'category' : data[5]
+            }
+            multimajor.append(row)
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'multimajor.html', { 'multimajor' : multimajor })
+
+def multimajorDetailView(request, id):
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, time, document, article, notes, category FROM hanseobase.dbapp_multimajor WHERE id=(%s);"
+        result = cursor.execute(sql, (id,))
+        data = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        multimajor = {
+            'id' : data[0][0],
+            'time' : data[0][1],
+            'document' : data[0][2],
+            'article' : data[0][3],
+            'notes' : data[0][4],
+            'category' : data[0][5]
+            }
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'multimajor_detail.html', { 'multimajor' : multimajor })
+
 def postCreate(request):
     if request.method == "POST":
         post_form = PostForm(request.POST, request.FILES)

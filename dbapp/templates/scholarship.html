@@ -1,0 +1,33 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main">
+	<div class="inner">
+        <div class="row" style="margin-top:-70px">
+			<div class="col-10">
+				<h1>장학금</h1>
+			</div>
+		</div>
+        <div>
+            <p>한서대학교 장학금에 대한 정보게시판 입니다.</p>
+        </div>
+		<span class="image main"><img src="{% static 'images/scholarship_main.png' %}" alt="" /></span>
+		<div>
+			<h2 style="margin-bottom:-70px;">장학금 정보</h2>
+			<section class="tiles">
+                {% for s in scholarship %}
+                    <article class="style1">
+                        <span class="image">
+                            <img src="{% static 'images/default_image.png' %}" alt="" />
+                        </span>
+                        <a href="scholarship/{{ s.id }}">
+                            <h2>{{ s.name }}</h2>
+                        </a>
+                    </article>
+                {% endfor %}
+			</section>
+		</div>
+	</div>
+</div>
+{% endblock %}
