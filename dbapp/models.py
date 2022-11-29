@@ -71,4 +71,13 @@ class Scholarship(models.Model):
     def __str__(self):
         return self.name
 
+class Post(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null =True)
+    title = models.CharField(max_length=10, null=True)
+    content = models.TextField(null = True)
+    description = models.CharField(max_length=20, null=True)
+    image = models.ImageField(upload_to='post/', default='hanseo_logo.png', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
     

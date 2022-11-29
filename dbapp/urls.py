@@ -18,7 +18,8 @@ urlpatterns = [
     path('facility/<int:id>', views.facilityDetailView, name = 'facility_detail'),
     path('facility/<int:id>/delete', views.facilityDelete, name = 'facility_delete'),
     path('facility/<int:id>/update', views.facilityUpdate, name = 'facility_update'),
-    path('postcreate/', views.postCreate, name = "post_create"),
+    path('postcreate', views.postCreate, name = "post_create"),
+    path('post/<int:id>', views.postDetailView, name = "post_detail"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -69,50 +69,19 @@
 			</div>
 		</div>
 		<section class="tiles">
+			{% for p in post %}
 			<article class="style1">
 				<span class="image">
-					<img src="/media/hanseo_logo.png" alt="" />
+					<img src="/media/{{ p.image }}" alt="" style="width: 300px; height: 280px;" />
 				</span>
-				<a href="/post">
-					<h2>게시글</h2>
+				<a href="/post/{{ p.id }}">
+					<h2>{{ p.title }}</h2>
 					<div class="content">
-						<p>게시글 정보입니다.</p>
+						<p>{{ p.description }}</p>
 					</div>
 				</a>
 			</article>
-			<article class="style1">
-				<span class="image">
-					<img src="/media/hanseo_logo.png" alt="" />
-				</span>
-				<a href="/post">
-					<h2>게시글</h2>
-					<div class="content">
-						<p>게시글 정보입니다.</p>
-					</div>
-				</a>
-			</article>
-			<article class="style1">
-				<span class="image">
-					<img src="/media/hanseo_logo.png" alt="" />
-				</span>
-				<a href="/post">
-					<h2>게시글</h2>
-					<div class="content">
-						<p>게시글 정보입니다.</p>
-					</div>
-				</a>
-			</article>
-			<article class="style1">
-				<span class="image">
-					<img src="/media/hanseo_logo.png" alt="" />
-				</span>
-				<a href="/post">
-					<h2>게시글</h2>
-					<div class="content">
-						<p>게시글 정보입니다.</p>
-					</div>
-				</a>
-			</article>
+			{% endfor %}
 		</section>
 	</div>
 </div>

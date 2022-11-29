@@ -1,5 +1,5 @@
 from django import forms
-from .models import Club, Facility
+from .models import Club, Facility, Post
 
 class ClubForm(forms.ModelForm):
     class Meta:
@@ -78,3 +78,29 @@ class FacilityForm(forms.ModelForm):
             'image' : '이미지',
             'url' : '지도 URL'
         }
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title','content','description','image']
+        widgets = {
+            'title' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : '제목',
+                },
+            ),
+            'content' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : '내용',
+                },
+            ),
+            'description' : forms.TextInput(
+                attrs={
+                    'class' : 'form-control',
+                    'placeholder' : '설명',
+                },
+            ),
+        }
+
