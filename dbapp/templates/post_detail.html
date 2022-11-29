@@ -1,0 +1,29 @@
+{% extends 'subbase.html' %}
+{% load static %}
+
+{% block content %}
+<div id="main" style="margin-top:-70px;">
+	<div class="inner">
+		<h1>{{ post.title }}</h1>
+        <h3>작성자 이름 : {{ user.username }}</h3>
+        <h3>작성자 학번 : {{ user.student_id }}</h3>
+        <div class="container" style="padding-top:30px;">
+            <div class="row">
+              <div class="col">
+                <img class="image" src="/media/{{ post.image }}" alt="" style="width:500px; heigth:500px;" />
+              </div>
+              <div class="col">
+                <h3>내용</h3>
+                <p style="width:500px">{{ post.content }}</p>
+              </div>
+            </div>
+        </div>
+        {% if post.user_id == request.user.id %}
+        <div style="padding-top: 20px;">
+          <a href="/club/{{ post.id }}/update" style="border-bottom:none;"><button type="" class="btn btn-primary">수정하기</button></a>
+          <a href="/club/{{ post.id }}/delete" style="border-bottom:none;"><button type="" style="margin-left:20px;" class="btn btn-primary">삭제하기</button></a>
+        </div>
+        {% endif %}
+	</div>
+</div>
+{% endblock %}

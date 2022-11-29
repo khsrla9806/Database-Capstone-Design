@@ -23,6 +23,7 @@ urlpatterns = [
     path('multimajor', views.multimajorView, name = 'multimajor'),
     path('multimajor/<int:id>', views.multimajorDetailView, name = 'multimajor_detail'),
     path('postcreate/', views.postCreate, name = "post_create"),
+    path('post/<int:id>', views.postDetailView, name = "post_detail"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

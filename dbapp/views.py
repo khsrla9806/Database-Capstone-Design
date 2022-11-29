@@ -1,10 +1,34 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
 from .models import Club, Facility
-from .forms import ClubForm, FacilityForm
+from .forms import ClubForm, FacilityForm, PostForm
 
 def home(request):
-    return render(request, 'index.html')
+    try:
+        cursor = connection.cursor()
+        
+        sql = "SELECT id, title, image, description FROM hanseobase.dbapp_post;"
+        result = cursor.execute(sql)
+        datas = cursor.fetchall()
+        
+        connection.commit()
+        connection.close()
+        
+        post = []
+        for data in datas:
+            row = {
+                'id' : data[0],
+                'title' : data[1],
+                'image' : data[2],
+                'description' : data[3],
+            }
+            post.append(row)
+        
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+    
+    return render(request, 'index.html', { 'post' : post })
 
 def facilityView(request):
     try:
@@ -296,4 +320,52 @@ def multimajorDetailView(request, id):
     return render(request, 'multimajor_detail.html', { 'multimajor' : multimajor })
 
 def postCreate(request):
-    return render(request, 'post_create.html')
+    if request.method == "POST":
+        post_form = PostForm(request.POST, request.FILES)
+        context = {"post_form" : post_form}
+        if post_form.is_valid():
+            post = post_form.save(commit=False)
+            post.user_id = request.user.id
+            post.save()
+            return redirect('/')
+        else:
+            return render(request, 'post_create.html', context)
+    else:
+        post_form = PostForm(request.POST, request.FILES)
+        context = {"post_form" : post_form}
+        return render(request, 'post_create.html', context)
+
+    
+
+def postDetailView(request, id):
+    try:
+        cursor = connection.cursor()
+        sql = "SELECT title, content, image ,user_id FROM hanseobase.dbapp_post WHERE id=(%s)"
+        cursor.execute(sql, (id,))
+        data = cursor.fetchall()
+        
+        post = {
+            'title' : data[0][0],
+            'content' : data[0][1],
+            'image' : data[0][2],
+            'user_id' : data[0][3],
+        }
+
+        user_id = data[0][3]
+        sql = "SELECT student_id, username FROM hanseobase.accounts_user WHERE id=(%s)"
+        cursor.execute(sql, (user_id,))
+        data = cursor.fetchall()
+
+        user = {
+            'student_id' : data[0][0],
+            'username' : data[0][1],
+        }
+
+        connection.commit()
+        connection.close()
+
+    except:
+        connection.rollback()
+        print("찾고자 하는 정보가 없습니다.")
+        
+    return render(request, 'post_detail.html', { "post" : post , "user" : user})
