@@ -2,7 +2,7 @@ from importlib.resources import contents
 from django.shortcuts import render
 from django.db.models import Q 
 from django.db import connection
-from dbapp.models import Club,Facility;
+from dbapp.models import Club, Facility, Scholarship, Post
 
 
 
@@ -15,6 +15,12 @@ def searchResult(request):
         facility = Facility.objects.all().filter(
             Q(name__icontains=query) 
         )
+        post = Post.objects.all().filter(
+            Q(title__icontains=query)
+        )
+        scholarship = Scholarship.objects.all().filter(
+            Q(name__icontains=query)
+        )
         result = club.union(facility)
-        print(result)
-    return render(request, 'search.html', {'query':query, 'result':result})
+    
+    return render(request, 'search.html', {'query':query, 'result':result, 'post':post, 'scholarship':scholarship})
