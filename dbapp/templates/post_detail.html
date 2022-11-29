@@ -20,8 +20,8 @@
         </div>
         {% if post.user_id == request.user.id %}
         <div style="padding-top: 20px;">
-          <a href="/club/{{ post.id }}/update" style="border-bottom:none;"><button type="" class="btn btn-primary">수정하기</button></a>
-          <a href="/club/{{ post.id }}/delete" style="border-bottom:none;"><button type="" style="margin-left:20px;" class="btn btn-primary">삭제하기</button></a>
+          <a href="/post/{{ post.id }}/update" style="border-bottom:none;"><button type="" class="btn btn-primary">수정하기</button></a>
+          <a href="/post/{{ post.id }}/delete" style="border-bottom:none;"><button type="" style="margin-left:20px;" class="btn btn-primary">삭제하기</button></a>
         </div>
         {% endif %}
 	</div>

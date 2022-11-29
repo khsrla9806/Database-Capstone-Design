@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
-from .models import Club, Facility
+from .models import Club, Facility, Post
 from .forms import ClubForm, FacilityForm, PostForm
 
 def home(request):
@@ -340,7 +340,7 @@ def postCreate(request):
 def postDetailView(request, id):
     try:
         cursor = connection.cursor()
-        sql = "SELECT title, content, image ,user_id FROM hanseobase.dbapp_post WHERE id=(%s)"
+        sql = "SELECT title, content, image ,user_id, id FROM hanseobase.dbapp_post WHERE id=(%s)"
         cursor.execute(sql, (id,))
         data = cursor.fetchall()
         
@@ -349,6 +349,7 @@ def postDetailView(request, id):
             'content' : data[0][1],
             'image' : data[0][2],
             'user_id' : data[0][3],
+            'id' : data[0][4],
         }
 
         user_id = data[0][3]
@@ -369,3 +370,21 @@ def postDetailView(request, id):
         print("찾고자 하는 정보가 없습니다.")
         
     return render(request, 'post_detail.html', { "post" : post , "user" : user})
+
+def postUpdate(request, id):
+    post = Post.objects.get(pk=id)
+    if request.method == "POST":
+        post_form = PostForm(request.POST, instance=post)
+        context = {"post_form" : post_form}
+        if post_form.is_valid():
+            post = post_form.save()
+            return redirect('post_detail', post.id)
+    else:
+        post_form = PostForm(instance=post)
+        context = {"post_form" : post_form}
+        return render(request, 'post_update.html', context)
+
+def postDelete(request, id):
+    post = get_object_or_404(Post, pk=id)
+    post.delete()
+    return redirect('/')
