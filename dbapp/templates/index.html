@@ -12,7 +12,7 @@
 		<div>
 			<h2 style="margin-bottom:-70px;">자주 찾는 카테고리</h2>
 			<section class="tiles">
-				<article class="style1">
+				<article class="style1" style="width: 250px; height: 250px;">
 					<span class="image">
 						<img src="{% static 'images/club_image.png' %}" alt="" />
 					</span>
@@ -23,7 +23,7 @@
 						</div>
 					</a>
 				</article>
-				<article class="style1">
+				<article class="style1" style="width: 250px; height: 250px;">
 					<span class="image">
 						<img src="{% static 'images/hanseouniv.png' %}" alt="" />
 					</span>
@@ -34,7 +34,7 @@
 						</div>
 					</a>
 				</article>
-				<article class="style1">
+				<article class="style1" style="width: 250px; height: 250px;">
 					<span class="image">
 						<img src="{% static 'images/scholarship.png' %}" alt="" />
 					</span>
@@ -45,7 +45,7 @@
 						</div>
 					</a>
 				</article>
-				<article class="style1">
+				<article class="style1" style="width: 250px; height: 250px;">
 					<span class="image">
 						<img src="{% static 'images/multimajor.png' %}" alt="" />
 					</span>
@@ -70,12 +70,12 @@
 		</div>
 		<section class="tiles">
 			{% for p in post %}
-			<article class="style1">
+			<article class="style1" style="width: 250px; height: 250px;">
 				<span class="image">
-					<img src="/media/{{ p.image }}" alt="" style="width: 300px; height: 280px;" />
+					<img src="/media/{{ p.image }}" alt="" />
 				</span>
 				<a href="/post/{{ p.id }}">
-					<h2>{{ p.title }}</h2>
+					<h2 style="font-size: 17px;">{{ p.title }}</h2>
 					<div class="content">
 						<p>{{ p.description }}</p>
 					</div>

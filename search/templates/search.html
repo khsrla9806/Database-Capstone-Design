@@ -4,9 +4,9 @@
 {% block content %}
 
 <div style="display: flex; margin-left:10%; margin-right:10%;">
-    <section class="tiles">
+    <section class="tiles" style="padding-bottom: 50px;">
         {% for r in result %}
-            <article class="style1" style="width: 300px; height: 280px;">
+            <article class="style1" style="width: 250px; height: 250px;">
                 <span class="image">
                     <img src="/media/{{ r.image }}" alt="" />
                 </span>
@@ -19,7 +19,7 @@
             </article>
         {% endfor %} 
         {% for p in post %}
-            <article class="style1" style="width: 300px; height: 280px;">
+            <article class="style1" style="width: 250px; height: 250px;">
                 <span class="image">
                     <img src="/media/{{ p.image }}" alt="" />
                 </span>
@@ -32,7 +32,7 @@
             </article>
         {% endfor %} 
         {% for s in scholarship %}
-            <article class="style1" style="width: 300px; height: 280px;">
+            <article class="style1" style="width: 250px; height: 250px;">
                 <span class="image">
                     <img src="{% static 'images/default_image.png' %}" alt="" />
                 </span>

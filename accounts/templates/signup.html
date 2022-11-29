@@ -8,8 +8,8 @@
         <noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
     </head>
     <body style="margin-left:20%; margin-right:20%; margin-top:10%; padding-bottom:40%;">
-        <div style="border: 1px solid gray; border-radius: 30px;">
-            <div style="padding-left:5%; margin-left: 100px;">
+        <div style="border: 1px solid gray; border-radius: 30px; display:flex; flex-direction: column; align-items:center;">
+            <div style="margin-right: 60px;">
                 <div class="inner" id="header" style="padding-bottom:3%;">
                     <div class="container">
                         <a href="/" class="logo" style="margin-left:30%;">
@@ -22,12 +22,12 @@
                 <form method="POST" style="width:500px; margin-left:15%; margin-right:15%; ">
                     {% csrf_token %}
                     <div class="form-outline mb-4">
-                      <input name="student_id" type="text" id="form2Example1" class="form-control" />
+                      <input name="student_id" type="text" id="form2Example1" class="form-control" style="width:400px" />
                       <label class="form-label" for="form2Example1">Student ID</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input name="username" type="text" id="form2Example2" class="form-control" />
+                        <input name="username" type="text" id="form2Example2" class="form-control" style="width:400px" />
                         <label class="form-label" for="form2Example2">Name</label>
                     </div>
 
@@ -38,17 +38,17 @@
                   
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input name="password1" type="password" id="form2Example2" class="form-control" />
+                      <input name="password1" type="password" id="form2Example2" class="form-control" style="width:400px" />
                       <label class="form-label" for="form2Example2">Password</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input name="password2" type="password" id="form2Example2" class="form-control" />
+                        <input name="password2" type="password" id="form2Example2" class="form-control" style="width:400px" />
                         <label class="form-label" for="form2Example2">Password Check</label>
                     </div>
                   
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left:40%; margin-top:5%;">회원가입</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4" style="margin-left:30%; margin-top:5%;">회원가입</button>
                 </form>
             </div>
         </div>
