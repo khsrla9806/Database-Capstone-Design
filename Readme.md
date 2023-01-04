@@ -31,11 +31,11 @@ Front의 경우 빠른 개발을 할 수 있는 **Bootstrap**의 resource를 가
 <br><br>
 
 ### 4️⃣ 프로젝트 구성도
-<img width="838" alt="image" src="https://user-images.githubusercontent.com/70641477/210513269-49a38254-d040-485d-8399-5b34c1726cf5.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/70641477/210513269-49a38254-d040-485d-8399-5b34c1726cf5.png">
 <br><br>
 
 ### 5️⃣ 메인 페이지 구성도
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/70641477/210513416-7498f5b8-4c7c-4711-9f42-49ebfd1cd18a.png"> <img width="500" alt="image" src="https://user-images.githubusercontent.com/70641477/210513469-81e0a0c3-9106-4988-9a07-6c5c4db8b876.png">
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/70641477/210513416-7498f5b8-4c7c-4711-9f42-49ebfd1cd18a.png"> <img width="450" alt="image" src="https://user-images.githubusercontent.com/70641477/210513469-81e0a0c3-9106-4988-9a07-6c5c4db8b876.png">
 <br><br>
 
 ### 6️⃣ 기능 설명
